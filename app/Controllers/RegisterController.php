@@ -20,7 +20,7 @@ class RegisterController
         $params = $request->getParsedBody();
         $params['password'] = password_hash($params['password'], PASSWORD_DEFAULT);
         $user = User::FirstOrCreate(['email' => $params['email']], $params);
-        $roleAdmin = Role::where('title', 'admin')->first();
+        $roleAdmin = Role::FirstOrCreate(['title' => 'admin']);
         $user->roles()->attach($roleAdmin->id);
 
         return $this->jwtManager->createToken($user);
