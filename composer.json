@@ -1,0 +1,28 @@
+{
+    "name": "academy4/app",
+    "autoload": {
+        "psr-4": {
+            "Project\\App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "n.brodackij",
+            "email": "n.brodackij@worksolutions.ru"
+        }
+    ],
+    "require": {
+        "nyholm/psr7": "^1.8",
+        "php-di/php-di": "^7.0",
+        "illuminate/database": "^10.48",
+        "robmorgan/phinx": "^0.16.3",
+        "slim/slim": "4.*",
+        "slim/psr7": "^1.7",
+        "guzzlehttp/guzzle": "^7.9",
+        "firebase/php-jwt": "^6.10",
+        "paragonie/sodium_compat": "^2.1"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^6.4"
+    }
+}

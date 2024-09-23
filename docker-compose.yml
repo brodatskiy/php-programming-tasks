@@ -1,0 +1,32 @@
+services:
+  web:
+    image: nginx:stable
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./:/var/www/project
+    ports:
+      - "8080:80"
+    restart:
+      always
+    container_name: project_nginx
+
+  php:
+    build:
+      dockerfile: ./php/Dockerfile
+    volumes:
+      - ./:/var/www/project
+    container_name: project_php
+    environment:
+      PHP_IDE_CONFIG: "serverName=php-academy-programming-tasks"
+
+  db:
+    image: postgres
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - '5432:5432'
+    container_name: project_db
